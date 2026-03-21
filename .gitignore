@@ -1,0 +1,47 @@
+# IDE/editor local files
+/.vscode/
+/.settings/
+
+
+# Build output directories
+/build/
+/bin/
+/obj/
+/out/
+/Objects/
+/Listings/
+
+# ARM/Keil/EIDE build artifacts
+*.o
+*.d
+*.dep
+*.axf
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.crf
+*.lnp
+
+# Keil user/session files (machine-specific)
+*.uvoptx
+*.uvguix.*
+*.tmp
+
+# EIDE template exports
+*.ept
+*.eide-template
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+
+# 我设置的
+*.bat
+*.svd
+# /library
+# /startup
+
+
