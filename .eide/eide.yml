@@ -82,10 +82,8 @@ virtualFolder:
       files:
         - path: Hardware/LED.c
         - path: Hardware/LED.h
-        - path: Hardware/led_off.c
-        - path: Hardware/led_off.h
-        - path: Hardware/test.c
-        - path: Hardware/test.h
+        - path: Hardware/Key.c
+        - path: Hardware/Key.h
       folders: []
     - name: examples
       files:
