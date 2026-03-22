@@ -24,4 +24,6 @@ options:
     LED_test:
         files: {}
         virtualPathFiles: {}
-        
+    Buzzer_test:
+        files: {}
+        virtualPathFiles: {}
