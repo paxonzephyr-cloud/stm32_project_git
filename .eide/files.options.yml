@@ -30,3 +30,6 @@ options:
     OLED_test:
         files: {}
         virtualPathFiles: {}
+    Count_sensor_test:
+        files: {}
+        virtualPathFiles: {}
