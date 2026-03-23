@@ -27,3 +27,6 @@ options:
     Buzzer_test:
         files: {}
         virtualPathFiles: {}
+    OLED_test:
+        files: {}
+        virtualPathFiles: {}
