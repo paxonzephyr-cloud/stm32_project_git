@@ -33,3 +33,6 @@ options:
     Count_sensor_test:
         files: {}
         virtualPathFiles: {}
+    Encode_test:
+        files: {}
+        virtualPathFiles: {}
