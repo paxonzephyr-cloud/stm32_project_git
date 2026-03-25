@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "Timer_gpio_etr.h"
 /**
  * @brief 使用内部时钟RCC配置TIM2
  * @param none  
@@ -10,15 +11,26 @@ void Timer_Init(void)
     //1.开启时钟
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
 
-    //2.选择时钟源
-    TIM_InternalClockConfig(TIM2);
+    //1.1,1.2配置GPIO
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
+
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Mode=GPIO_Mode_IPU;
+    GPIO_InitStructure.GPIO_Pin=GPIO_Pin_0;
+    GPIO_InitStructure.GPIO_Speed=GPIO_Speed_50MHz;
+    GPIO_Init(GPIOA,&GPIO_InitStructure);
+
+
+
+    //2.选择时钟源           //定时器,预分频,触发极性(上升/下降),数字滤波器
+    TIM_ETRClockMode2Config(TIM2,TIM_ExtTRGPSC_OFF,TIM_ExtTRGPolarity_NonInverted,0x0F);
 
     //3.配置时基单元
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
-    TIM_TimeBaseInitStructure.TIM_ClockDivision=0;      //这个过滤器设置了其实很好用
-    TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up;
-    TIM_TimeBaseInitStructure.TIM_Period=7200-1;       //72M/7200/10000=1hz
-    TIM_TimeBaseInitStructure.TIM_Prescaler=10000-1;     //这样1s产生一次中断
+    TIM_TimeBaseInitStructure.TIM_ClockDivision=TIM_CKD_DIV1;      
+    TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up;//向上计数模式
+    TIM_TimeBaseInitStructure.TIM_Period=10-1;       
+    TIM_TimeBaseInitStructure.TIM_Prescaler=1-1;    
     TIM_TimeBaseInitStructure.TIM_RepetitionCounter=0;
     TIM_TimeBaseInit(TIM2,&TIM_TimeBaseInitStructure);
     //预分频器是有缓冲寄存器,设置的值只有在更新事件时才会起作用,为了立即起效,配置完会\
