@@ -39,3 +39,9 @@ options:
     Timer_Clock_test:
         files: {}
         virtualPathFiles: {}
+    Timer_gpio_etr:
+        files: {}
+        virtualPathFiles: {}
+    Timer_gpio_etr_test:
+        files: {}
+        virtualPathFiles: {}
