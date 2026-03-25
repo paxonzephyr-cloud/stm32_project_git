@@ -36,3 +36,6 @@ options:
     Encode_test:
         files: {}
         virtualPathFiles: {}
+    Timer_Clock_test:
+        files: {}
+        virtualPathFiles: {}
