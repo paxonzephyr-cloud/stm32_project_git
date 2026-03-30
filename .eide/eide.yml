@@ -137,6 +137,8 @@ targets:
       - <virtual_root>/examples/Count_sensor_test.c
       - <virtual_root>/examples/Buzzer_test.c
       - <virtual_root>/examples/OLED_test.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -286,6 +288,8 @@ targets:
       - <virtual_root>/examples/led_test.c
       - <virtual_root>/User/main.c
       - <virtual_root>/examples/OLED_test.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -437,6 +441,8 @@ targets:
       - <virtual_root>/examples/Count_sensor_test.c
       - <virtual_root>/examples/Buzzer_test.c
       - <virtual_root>/examples/OLED_test.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -584,6 +590,8 @@ targets:
       libList: []
     excludeList:
       - <virtual_root>/User/main.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -732,6 +740,8 @@ targets:
       - <virtual_root>/examples/Buzzer_test.c
       - <virtual_root>/examples/led_test.c
       - <virtual_root>/User/main.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -877,6 +887,8 @@ targets:
         - Hardware
       libList: []
     excludeList: []
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -1029,6 +1041,8 @@ targets:
       - <virtual_root>/examples/Buzzer_test.c
       - <virtual_root>/examples/OLED_test.c
       - <virtual_root>/examples/Encoder_test.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -1183,6 +1197,8 @@ targets:
       - <virtual_root>/examples/Encoder_test.c
       - <virtual_root>/examples/Timer_clock_test.c
       - <virtual_root>/system/Timer_clock.c
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
@@ -1330,6 +1346,8 @@ targets:
       libList: []
     excludeList:
       - <virtual_root>/examples
+    settings:
+      debugger: cortex-debug
     toolchain: AC5
     toolchainConfigMap:
       AC5:
