@@ -1,6 +1,6 @@
 #include "stm32f10x.h"
 
-void PWM_Init(void)
+void PWM_servo_Init(void)
 {
     // 1.开启时钟
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);

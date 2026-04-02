@@ -54,3 +54,6 @@ options:
     PWM_servo_test:
         files: {}
         virtualPathFiles: {}
+    PWM_motor_test:
+        files: {}
+        virtualPathFiles: {}
