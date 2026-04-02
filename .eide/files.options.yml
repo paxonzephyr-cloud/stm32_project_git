@@ -45,3 +45,6 @@ options:
     Timer_gpio_etr_test:
         files: {}
         virtualPathFiles: {}
+    PWM_test:
+        files: {}
+        virtualPathFiles: {}
