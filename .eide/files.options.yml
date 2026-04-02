@@ -48,3 +48,9 @@ options:
     PWM_test:
         files: {}
         virtualPathFiles: {}
+    PWM_servo:
+        files: {}
+        virtualPathFiles: {}
+    PWM_servo_test:
+        files: {}
+        virtualPathFiles: {}
