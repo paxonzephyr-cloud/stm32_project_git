@@ -1,5 +1,5 @@
-#ifndef __PWM_H
-#define __PWM_H
+#ifndef __PWM_LEDBREATH_H
+#define __PWM_LEDBREATH_H
 #include <stdint.h>
 
 void PWM_Init(void);
