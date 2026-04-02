@@ -597,6 +597,19 @@ targets:
       libList: []
     excludeList:
       - <virtual_root>/User/main.c
+      - <virtual_root>/examples/Timer_gpio_etr_test.c
+      - <virtual_root>/examples/Timer_clock_test.c
+      - <virtual_root>/examples/PWM_servo_test.c
+      - <virtual_root>/examples/PWM_LEDbreath_test.c
+      - <virtual_root>/examples/OLED_test.c
+      - <virtual_root>/examples/Encoder_test.c
+      - <virtual_root>/examples/Count_sensor_test.c
+      - <virtual_root>/examples/Buzzer_test.c
+      - <virtual_root>/examples/led_test.c
+      - <virtual_root>/Hardware/PWM_LEDbreath.c
+      - <virtual_root>/Hardware/PWM_servo.c
+      - <virtual_root>/system/Timer_gpio_etr.c
+      - <virtual_root>/system/Timer_clock.c
     settings:
       debugger: cortex-debug
     toolchain: AC5

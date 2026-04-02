@@ -4,5 +4,6 @@
 
 void PWM_Init(void);
 void PWM_SetCompare2(uint16_t compare2);
+void Servo_SetAngle(float Angle);
 
 #endif

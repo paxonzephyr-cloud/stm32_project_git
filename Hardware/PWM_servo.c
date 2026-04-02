@@ -6,7 +6,6 @@ void PWM_Init(void)
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 
-
     //2.配置PA1为复用推挽输出----由外设直接控制输出
     GPIO_InitTypeDef GPIO_Inistructure;
     GPIO_Inistructure.GPIO_Mode = GPIO_Mode_AF_PP; 
@@ -43,4 +42,10 @@ void PWM_Init(void)
 void PWM_SetCompare2(uint16_t compare2)
 {
     TIM_SetCompare2(TIM2,compare2);
+}
+
+//封装函数
+void Servo_SetAngle(float Angle)
+{
+    TIM_SetCompare2(TIM2,Angle/180*2000+2500);
 }
