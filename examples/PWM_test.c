@@ -9,12 +9,12 @@ int main(void)
     uint8_t i;
     while (1)
     {
-        for ( i = 0; i < 100; i++)
+        for ( i = 0; i <= 100; i++)//占空比d以最小分辨率1%一直增加到100%
         {
             PWM_SetCompare1(i);
             Delay_ms(20);
         }
-        for ( i = 0; i < 100; i++)
+        for ( i = 0; i <= 100; i++)
         {
             PWM_SetCompare1(100-i);
             Delay_ms(20);
