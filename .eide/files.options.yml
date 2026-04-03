@@ -57,3 +57,6 @@ options:
     PWM_motor_test:
         files: {}
         virtualPathFiles: {}
+    InputCapture_test:
+        files: {}
+        virtualPathFiles: {}
