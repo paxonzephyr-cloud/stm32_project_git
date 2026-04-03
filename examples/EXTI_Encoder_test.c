@@ -1,6 +1,6 @@
 #include "Delay.h"
 #include "stm32f10x.h" // Device header
-#include "Encoder.h"
+#include "EXTI_Encoder.h"
 #include "OLED.h"
 int16_t Num;
 

@@ -88,44 +88,15 @@ virtualFolder:
         - path: Hardware/LED.h
         - path: Hardware/Key.c
         - path: Hardware/Key.h
-        - path: Hardware/Buzzer.c
-        - path: Hardware/Buzzer.h
-        - path: Hardware/Light_sensor.c
-        - path: Hardware/Light_sensor.h
         - path: Hardware/OLED.c
         - path: Hardware/OLED.h
         - path: Hardware/OLED_Font.h
-        - path: Hardware/Count_sensor.c
-        - path: Hardware/Count_sensor.h
-        - path: Hardware/Encoder.c
-        - path: Hardware/Encoder.h
-        - path: Hardware/PWM_LEDbreath.c
-        - path: Hardware/PWM_LEDbreath.h
-        - path: Hardware/PWM_servo.c
-        - path: Hardware/PWM_servo.h
-        - path: Hardware/PWM_motor.c
-        - path: Hardware/PWM_motor.h
-        - path: Hardware/PWM_motor_Init.c
-        - path: Hardware/PWM_motor_Init.h
-        - path: Hardware/InputCapture_Init.c
-        - path: Hardware/InputCapture_Init.h
-        - path: Hardware/InputCapture_PWM_Init.c
-        - path: Hardware/InputCapture_PWM_Init.h
+        - path: Hardware/Encoder_Interface.c
+        - path: Hardware/Encoder_Interface.h
       folders: []
     - name: examples
       files:
-        - path: examples/led_test.c
-        - path: examples/Buzzer_test.c
-        - path: examples/OLED_test.c
-        - path: examples/Count_sensor_test.c
-        - path: examples/Encoder_test.c
-        - path: examples/Timer_clock_test.c
-        - path: examples/Timer_gpio_etr_test.c
-        - path: examples/LED_test.c
-        - path: examples/PWM_LEDbreath_test.c
-        - path: examples/PWM_servo_test.c
-        - path: examples/PWM_motor_test.c
-        - path: examples/InputCapture_test.c
+        - path: examples/Encoder_Interface_test.c
       folders: []
 dependenceList: []
 outDir: build
@@ -576,6 +547,171 @@ targets:
       OpenOCD:
         baseAddr: "0x08000000"
         bin: ./build/Encoder_test/templateDemo.hex
+        interface: stlink
+        target: stm32f1x
+      STLink:
+        address: "0x8000000"
+        bin: ""
+        elFile: None
+        optionBytes: .eide/target_1.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
+    uploader: OpenOCD
+  Encoder_Interface_test:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_STDPERIPH_DRIVER
+        - STM32F10X_MD
+      incList:
+        - .
+        - startup
+        - library
+        - User
+        - system
+        - .cmsis/include
+        - RTE/_Target_1
+        - Hardware
+      libList: []
+    excludeList:
+      - <virtual_root>/examples/Buzzer_test.c
+      - <virtual_root>/examples/Count_sensor_test.c
+      - <virtual_root>/examples/Encoder_test.c
+      - <virtual_root>/examples/led_test.c
+      - <virtual_root>/examples/LED_test.c
+      - <virtual_root>/examples/OLED_test.c
+      - <virtual_root>/examples/Timer_clock_test.c
+      - <virtual_root>/examples/Timer_gpio_etr_test.c
+      - <virtual_root>/User/main.c
+      - <virtual_root>/system/Timer_clock.c
+      - <virtual_root>/system/Timer_gpio_etr.c
+      - <virtual_root>/examples/PWM_LEDbreath_test.c
+      - <virtual_root>/examples/PWM_servo_test.c
+      - <virtual_root>/examples/PWM_motor_test.c
+      - <virtual_root>/examples/InputCapture_test.c
+      - <virtual_root>/examples/EXTI_Count_sensor_test.c
+      - <virtual_root>/examples/EXTI_Encoder_test.c
+    settings:
+      debugger: cortex-debug
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M3
+        floatingPointHardware: none
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            gnu-extensions: true
+            one-elf-section-per-function: true
+            optimization: level-1
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+            use-microLIB: true
+          linker:
+            $outputTaskExcludes:
+              - .bin
+              - .s19
+            output-format: elf
+            ro-base: "0x08000000"
+            rw-base: "0x20000000"
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x5000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x8000000"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: false
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ./build/Encoder_Interface_test/templateDemo.hex
         interface: stlink
         target: stm32f1x
       STLink:
