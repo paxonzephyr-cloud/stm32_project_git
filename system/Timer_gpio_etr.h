@@ -1,4 +1,4 @@
-#ifndef __TIMER_H
-#define __TIMER_H
-void Timer_Init(void);
+#ifndef __Timer_GPIO_ETR_H
+#define __Timer_GPIO_ETR_H
+void Timer_GPIO_ETR_Init(void);
 #endif

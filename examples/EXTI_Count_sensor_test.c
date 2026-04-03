@@ -1,7 +1,7 @@
 #include "Delay.h"
 #include "stm32f10x.h" // Device header
 #include "OLED.h"
-#include "Count_sensor.h"
+#include "EXTI_Count_sensor.h"
 
 int main(void)
 {

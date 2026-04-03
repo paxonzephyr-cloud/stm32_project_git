@@ -60,3 +60,6 @@ options:
     InputCapture_test:
         files: {}
         virtualPathFiles: {}
+    Encoder_Interface_test:
+        files: {}
+        virtualPathFiles: {}
