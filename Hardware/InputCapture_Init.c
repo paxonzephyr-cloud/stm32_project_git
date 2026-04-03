@@ -34,6 +34,15 @@ void InputCapture_Init(void)
     TIM_ICInitStructure.TIM_ICPrescaler=TIM_ICPSC_DIV1 ;    //触发信号分频
     TIM_ICInitStructure.TIM_ICSelection=TIM_ICSelection_DirectTI;//直连通道输入
     TIM_ICInit(TIM3,&TIM_ICInitStructure);
+
+    //5.1 使用PWMI函数
+    TIM_PWMIConfig(TIM3,&TIM_ICInitStructure);
+    // TIM_ICInitStructure.TIM_Channel=TIM_Channel_2;//选择通道1
+    // TIM_ICInitStructure.TIM_ICFilter=0x0F;         //输入信号滤波
+    // TIM_ICInitStructure.TIM_ICPolarity=TIM_ICPolarity_Falling;//下降沿沿触发
+    // TIM_ICInitStructure.TIM_ICPrescaler=TIM_ICPSC_DIV1 ;    //触发信号分频
+    // TIM_ICInitStructure.TIM_ICSelection=TIM_ICSelection_IndirectTI;//交叉通道输入
+    // TIM_ICInit(TIM3,&TIM_ICInitStructure);
     
     // 6.配置从模式
     TIM_SelectInputTrigger(TIM3,TIM_TS_TI1FP1);
@@ -43,7 +52,15 @@ void InputCapture_Init(void)
     TIM_Cmd(TIM3, ENABLE);
 
 }
+
+//频率测量函数封装
 uint32_t InputCaprture_GetFreq(void)
 {
     return (1000000/(TIM_GetCapture1(TIM3)+1));//获取
+}
+
+//占空比函数封装
+uint32_t InputCaprture_GetDuty(void)
+{
+    return (TIM_GetCapture2(TIM3)+1)*100/(TIM_GetCapture1(TIM3)+1);
 }

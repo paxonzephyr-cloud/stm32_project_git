@@ -4,5 +4,6 @@
 
 void InputCapture_Init(void);
 uint32_t InputCaprture_GetFreq(void);
+uint32_t InputCaprture_GetDuty(void);
 
 #endif
