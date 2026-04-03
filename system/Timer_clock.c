@@ -1,4 +1,3 @@
-#include "Timer_Clock.h"
 #include "stm32f10x.h"
 /**
  * @brief 使用内部时钟RCC配置TIM2
@@ -6,7 +5,7 @@
  * @return none
  */
 extern uint16_t NUM;
-void Timer_Init(void)
+void Timer_Clock_Init(void)
 {
     // 1.开启时钟
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
@@ -46,12 +45,3 @@ void Timer_Init(void)
     TIM_Cmd(TIM2, ENABLE);
 }
 
-void TIM2_IRQHandler(void)
-{
-    if (TIM_GetITStatus(TIM2, TIM_IT_Update))
-    {
-
-        NUM += 1;
-        TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
-    }
-}

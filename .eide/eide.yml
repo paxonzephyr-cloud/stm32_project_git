@@ -585,14 +585,13 @@ targets:
       - <virtual_root>/examples/Timer_clock_test.c
       - <virtual_root>/examples/Timer_gpio_etr_test.c
       - <virtual_root>/User/main.c
-      - <virtual_root>/system/Timer_clock.c
-      - <virtual_root>/system/Timer_gpio_etr.c
       - <virtual_root>/examples/PWM_LEDbreath_test.c
       - <virtual_root>/examples/PWM_servo_test.c
       - <virtual_root>/examples/PWM_motor_test.c
       - <virtual_root>/examples/InputCapture_test.c
       - <virtual_root>/examples/EXTI_Count_sensor_test.c
       - <virtual_root>/examples/EXTI_Encoder_test.c
+      - <virtual_root>/system/Timer_gpio_etr.c
     settings:
       debugger: cortex-debug
     toolchain: AC5

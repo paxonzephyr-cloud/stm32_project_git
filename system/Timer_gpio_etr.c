@@ -1,12 +1,11 @@
 #include "stm32f10x.h"
-#include "Timer_gpio_etr.h"
 /**
  * @brief 使用内部时钟RCC配置TIM2
  * @param none  
  * @return none  
  */
 extern uint16_t NUM;
-void Timer_Init(void)
+void Timer_GPIO_ETR_Init(void)
 {
     //1.开启时钟
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
