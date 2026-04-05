@@ -66,3 +66,6 @@ options:
     ADC_single_test:
         files: {}
         virtualPathFiles: {}
+    ADC_multi_test:
+        files: {}
+        virtualPathFiles: {}
