@@ -63,3 +63,6 @@ options:
     Encoder_Interface_test:
         files: {}
         virtualPathFiles: {}
+    ADC_single_test:
+        files: {}
+        virtualPathFiles: {}
