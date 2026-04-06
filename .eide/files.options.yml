@@ -69,3 +69,9 @@ options:
     ADC_multi_test:
         files: {}
         virtualPathFiles: {}
+    DMA_M2M:
+        files: {}
+        virtualPathFiles: {}
+    DMA_M2M_test:
+        files: {}
+        virtualPathFiles: {}
