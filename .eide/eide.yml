@@ -91,10 +91,15 @@ virtualFolder:
         - path: Hardware/OLED.c
         - path: Hardware/OLED.h
         - path: Hardware/OLED_Font.h
-      folders: []
+        - path: Hardware/DMA_ADC_multi.c
+        - path: Hardware/DMA_ADC_multi.h
+      folders:
+        - name: stash
+          files: []
+          folders: []
     - name: examples
       files:
-        - path: examples/DMA_M2M_test.c
+        - path: examples/DMA_ADC_multi_test.c
       folders: []
 dependenceList: []
 outDir: build
@@ -718,7 +723,7 @@ targets:
         runAfterProgram: true
         speed: 4000
     uploader: OpenOCD
-  DMA_M2M:
+  DMA_ADC_multi_test:
     cppPreprocessAttrs:
       defineList:
         - USE_STDPERIPH_DRIVER
@@ -857,7 +862,7 @@ targets:
         speed: 8000
       OpenOCD:
         baseAddr: "0x08000000"
-        bin: ./build/DMA_M2M_test/templateDemo.hex
+        bin: ./build/DMA_ADC_multi_test/templateDemo.hex
         interface: stlink
         target: stm32f1x
       STLink:
