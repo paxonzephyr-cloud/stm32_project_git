@@ -1,28 +1,37 @@
 #include "Delay.h"
 #include "stm32f10x.h" // Device header
 #include "OLED.h"
+#include "DMA_M2M.h"
 
-uint8_t aa=0x66;
-const uint8_t bb=0x66;
-
-#define ADC1_DR (uint32_t)0x4001244C
+uint8_t DataA[]={0x01,0x02,0x03,0x04};
+uint8_t DataB[]={0,0,0,0};
 
 int main(void)
 {
     OLED_Init();
+    OLED_ShowHexNum(1,1,DataA[0],2);
+    OLED_ShowHexNum(1,4,DataA[1],2);
+    OLED_ShowHexNum(1,7,DataA[2],2);
+    OLED_ShowHexNum(1,10,DataA[3],2);
+    
+    OLED_ShowHexNum(2,1,DataB[0],2);
+    OLED_ShowHexNum(2,4,DataB[1],2);
+    OLED_ShowHexNum(2,7,DataB[2],2);
+    OLED_ShowHexNum(2,10,DataB[3],2);
 
-    // OLED_ShowHexNum(1,1,aa,4);
-    // OLED_ShowHexNum(2,1,(uint32_t)&aa,8);       //2000:在SRAM
 
-    // OLED_ShowHexNum(3,1,bb,4);
-    // OLED_ShowHexNum(4,1,(uint32_t)&bb,8);       //0800:在Flash(还有程序代码的内容)
-
-    OLED_ShowHexNum(3,1,(uint32_t)&(ADC1->DR),8);       //4000:
-
-    OLED_ShowHexNum(4,1,ADC1_DR,8);       //直接定义物理地址
+    DMA_M2M_Init((uint32_t)DataA,(uint32_t)DataB,4);
+    OLED_ShowHexNum(3,1,DataA[0],2);
+    OLED_ShowHexNum(3,4,DataA[1],2);
+    OLED_ShowHexNum(3,7,DataA[2],2);
+    OLED_ShowHexNum(3,10,DataA[3],2);
+    
+    OLED_ShowHexNum(4,1,DataB[0],2);
+    OLED_ShowHexNum(4,4,DataB[1],2);
+    OLED_ShowHexNum(4,7,DataB[2],2);
+    OLED_ShowHexNum(4,10,DataB[3],2);
 
     while (1)
     {
-
     }
 }

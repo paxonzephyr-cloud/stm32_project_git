@@ -72,6 +72,8 @@ virtualFolder:
         - path: system/Delay.h
         - path: system/Timer_clock.c
         - path: system/Timer_clock.h
+        - path: system/DMA_M2M.c
+        - path: system/DMA_M2M.h
       folders: []
     - name: User
       files:
@@ -89,8 +91,6 @@ virtualFolder:
         - path: Hardware/OLED.c
         - path: Hardware/OLED.h
         - path: Hardware/OLED_Font.h
-        - path: Hardware/DMA_M2M.c
-        - path: Hardware/DMA_M2M.h
       folders: []
     - name: examples
       files:
