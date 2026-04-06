@@ -4,7 +4,6 @@
 
 extern uint16_t AD_Value[4];
 void DMA_ADC_multi_Init(void);
-void DMA_ADC_multi_GetValue(void);
 
 
 #endif

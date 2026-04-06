@@ -27,7 +27,7 @@ void DMA_ADC_multi_Init(void)
     ADC_InitTypeDef ADC_InitStructure;
     ADC_InitStructure.ADC_Mode=ADC_Mode_Independent;                     //工作模式:ADC1,2独立工作
     ADC_InitStructure.ADC_ScanConvMode=ENABLE;                          //多通道扫描模式:是
-    ADC_InitStructure.ADC_ContinuousConvMode=DISABLE;                    //连续转换扫描:否(单次转换)
+    ADC_InitStructure.ADC_ContinuousConvMode=ENABLE;                    //连续转换扫描:是
     ADC_InitStructure.ADC_ExternalTrigConv=ADC_ExternalTrigConv_None;   //外部触发方式:否(选择软件触发)
     ADC_InitStructure.ADC_DataAlign=ADC_DataAlign_Right;                //数据对齐方式:右对齐
     ADC_InitStructure.ADC_NbrOfChannel=4;                               //扫描的通道数
@@ -43,7 +43,7 @@ void DMA_ADC_multi_Init(void)
     DMA_InitStructure.DMA_MemoryInc=DMA_MemoryInc_Enable;           //地址自增
     DMA_InitStructure.DMA_DIR=DMA_DIR_PeripheralSRC;                //发送方向
     DMA_InitStructure.DMA_BufferSize=4;                          //发送次数
-    DMA_InitStructure.DMA_Mode=DMA_Mode_Normal;                     //模式:正常缓存(非循环)
+    DMA_InitStructure.DMA_Mode=DMA_Mode_Circular;                     //模式:循环循环
     DMA_InitStructure.DMA_M2M=DMA_M2M_Disable;                       //:软件触发
     DMA_InitStructure.DMA_Priority=DMA_Priority_Medium;             //优先级
     DMA_Init(DMA1_Channel1,&DMA_InitStructure);//外设图中ADC1的硬件触发只接在Channel1上
@@ -58,16 +58,6 @@ void DMA_ADC_multi_Init(void)
     ADC_StartCalibration(ADC1);
     while(ADC_GetCalibrationStatus(ADC1)==SET);//完成后返回SET
     
-}
-
-void DMA_ADC_multi_GetValue(void)
-{
-    DMA_Cmd(DMA1_Channel1,DISABLE);
-    DMA_SetCurrDataCounter(DMA1_Channel1,4);
-    DMA_Cmd(DMA1_Channel1,ENABLE);
-    
+    //7.软件开启
     ADC_SoftwareStartConvCmd(ADC1,ENABLE);
-
-    while(DMA_GetFlagStatus(DMA1_FLAG_TC1)==RESET);
-    DMA_ClearFlag(DMA1_FLAG_TC1);
 }
