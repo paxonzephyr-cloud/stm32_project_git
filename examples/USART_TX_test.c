@@ -21,8 +21,8 @@ int main(void)
 
     // Seria_SendNumber(12345);
 
-    printf("NUM=%d",666);
-    // printf("HELLOWORLD");
+    printf("NUM=%d\r\n",666);
+    printf("HELLOWORLD\r\n");
 
     while (1)
     {
