@@ -81,3 +81,6 @@ options:
     USART_TX_test:
         files: {}
         virtualPathFiles: {}
+    USART_TX_RX_test:
+        files: {}
+        virtualPathFiles: {}

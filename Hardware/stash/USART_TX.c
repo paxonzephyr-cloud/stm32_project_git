@@ -56,7 +56,7 @@ void Seria_SendNumber(uint32_t number)
     uint32_t num=number;
     uint32_t mask=1;
     while(num>9){
-        num/=10;;mask*=10;
+        num/=10;mask*=10;
     }
   
     while(mask){
