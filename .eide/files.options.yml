@@ -78,3 +78,6 @@ options:
     DMA_ADC_multi_test:
         files: {}
         virtualPathFiles: {}
+    USART_TX_test:
+        files: {}
+        virtualPathFiles: {}
