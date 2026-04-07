@@ -30,3 +30,19 @@ void Serial_SendByte(uint8_t Byte)
     while(USART_GetFlagStatus(USART1,USART_FLAG_TXE)==RESET);
     //关于清除标志位,由于对USART->DR进行写操作时会将TXE标志位清零,所以不用再手动(软件)清除
 }
+
+void Serial_SendArray(uint8_t Array[],uint16_t length)
+{   
+    for (uint16_t i = 0; i < length; i++)
+    {
+        Serial_SendByte(Array[i]);
+    }
+}
+
+void Seria_SendString(char* String)
+{
+    while(*String){
+        Serial_SendByte(*String);
+        String++;
+    }
+}

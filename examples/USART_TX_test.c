@@ -3,16 +3,21 @@
 #include "OLED.h"
 #include "USART_TX.h"
 
+uint8_t MyArray[4]={0x42,0x43,0x44,0x45};
+char* MyString="HELLOWORLD";
+
 int main(void)
 {
     OLED_Init();
     Seria_Init();
 
     // Serial_SendByte(0x41);
-    Serial_SendByte('A');
+    // Serial_SendByte('A');
 
-
+    // Serial_SendArray(MyArray,4);
      
+    Seria_SendString("HELLOWORLD\r\n");
+
     while (1)
     {
     }
