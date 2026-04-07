@@ -1,4 +1,5 @@
 #include "stm32f10x.h" // Device headerc
+#include "stdio.h"
 
 void Seria_Init(void)
 {
@@ -21,6 +22,7 @@ void Seria_Init(void)
     USART_Init(USART1,&USART_InitSructure);
 
     USART_Cmd(USART1,ENABLE);
+    USART_ClearFlag(USART1, USART_FLAG_TC);//TC标志位在初始化后是置1的情况
     
 }
 
@@ -44,5 +46,21 @@ void Seria_SendString(char* String)
     while(*String){
         Serial_SendByte(*String);
         String++;
+    }
+}
+
+void Seria_SendNumber(uint32_t number)
+{
+
+    uint32_t num=number;
+    uint32_t mask=1;
+    while(num>9){
+        num/=10;;mask*=10;
+    }
+  
+    while(mask){
+        Serial_SendByte((uint8_t)(number/mask)+'0');
+        number%=mask;
+        mask/=10;
     }
 }
