@@ -1,5 +1,6 @@
 #include "stm32f10x.h" // Device headerc
 #include "stdio.h"
+#include "stdarg.h"
 
 void Seria_Init(void)
 {
@@ -78,4 +79,14 @@ int fputc(int ch, FILE *f)//对printf函数进行了重定义
     USART_SendData(USART1,(uint8_t)ch);//串口1,发送一个数据
     while(RESET == USART_GetFlagStatus(USART1,USART_FLAG_TC));//等待发送完成
     return ch;
+}
+
+void Serial_Printf(char* format,...)
+{
+    char String[100];
+    va_list arg;
+    va_start(arg,format);
+    vsprintf(String,format,arg);
+    va_end(arg);
+    Seria_SendString(String);
 }
