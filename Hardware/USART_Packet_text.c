@@ -62,7 +62,7 @@ void Serial_SendArray(uint8_t Array[], uint16_t length)
     }
 }
 
-void Seria_SendString(char *String)
+void Serial_SendString(char *String)
 {
     while (*String)
     {
@@ -71,7 +71,7 @@ void Seria_SendString(char *String)
     }
 }
 
-void Seria_SendNumber(uint32_t number)
+void Serial_SendNumber(uint32_t number)
 {
 
     uint32_t num = number;
@@ -107,7 +107,7 @@ void Serial_Printf(char *format, ...)
     va_start(arg, format);
     vsprintf(String, format, arg);
     va_end(arg);
-    Seria_SendString(String);
+    Serial_SendString(String);
 }
 
 // 读后自动清除
