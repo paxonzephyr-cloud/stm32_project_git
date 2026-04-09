@@ -1,8 +1,10 @@
-#ifndef __USART_TX_RX_H
-#define __USART_TX_RX_H
+#ifndef __USART_PACKET_H
+#define __USART_PACKET_H
 #include "stm32f10x.h"
 
-void Seria_TX_RX_Init(void);
+void Seria_Packet_Init(void);
+
+
 void Serial_SendByte(uint8_t Byte);
 void Serial_SendArray(uint8_t Array[],uint16_t length);
 void Seria_SendString(char* String);
