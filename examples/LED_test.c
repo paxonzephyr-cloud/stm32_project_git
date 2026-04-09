@@ -1,25 +1,21 @@
 #include "Delay.h"
-#include "Key.h"
 #include "LED.h"
 #include "stm32f10x.h" // Device header
 
 
 int main(void)
 {
-    LED_Init(GPIO_Pin_1 | GPIO_Pin_2);
-    KEY_Init(GPIO_Pin_1 | GPIO_Pin_11);
+    led_in PA0={GPIOA,GPIO_Pin_0,0};
+    led_in PA1={GPIOA,GPIO_Pin_1,1};
+    LED_Init(&PA0);
+    LED_Init(&PA1);
 
-    while (1)
-    {
-        uint16_t key = KEY_GetNum(GPIO_Pin_1 | GPIO_Pin_11);
-        if (key == GPIO_Pin_1)
-        {
-            LED_Toggle(GPIO_Pin_1);
-        }
-
-        if (key == GPIO_Pin_11)
-        {
-            LED_Toggle(GPIO_Pin_2);
-        }
+    while (1){
+       LED_ON(&PA0);
+       LED_ON(&PA1);
+       Delay_ms(500);
+       LED_OFF(&PA0);
+       LED_OFF(&PA1);
+       Delay_ms(500);
     }
 }
