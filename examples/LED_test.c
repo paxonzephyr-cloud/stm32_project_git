@@ -5,17 +5,28 @@
 
 int main(void)
 {
-    led_in PA0={GPIOA,GPIO_Pin_0,0};
-    led_in PA1={GPIOA,GPIO_Pin_1,1};
-    LED_Init(&PA0);
-    LED_Init(&PA1);
+    led_in leds[]={
+        {GPIOA,GPIO_Pin_0,0},
+        {GPIOA,GPIO_Pin_1,0},
+        {GPIOA,GPIO_Pin_2,0},
+        {GPIOA,GPIO_Pin_3,0},
+        {GPIOA,GPIO_Pin_4,0},
+        {GPIOA,GPIO_Pin_5,0},
+        {GPIOA,GPIO_Pin_6,0},
+        {GPIOA,GPIO_Pin_7,0},
+    };
 
+    for (uint8_t i = 0; i < 7; i++)
+    {
+        LED_Init(&leds[i]);
+    }
+    
     while (1){
-       LED_ON(&PA0);
-       LED_ON(&PA1);
-       Delay_ms(500);
-       LED_OFF(&PA0);
-       LED_OFF(&PA1);
-       Delay_ms(500);
+        for (uint8_t i = 0; i < 7; i++)
+        {
+            LED_ON(&leds[i]);
+            Delay_ms(500);
+            LED_OFF(&leds[i]);
+        }        
     }
 }
