@@ -1,65 +1,51 @@
-#include "stm32f10x.h" // Device header
+#include "LED.h"
 
-/*
-函数内容：初始化LED引脚GPIO
-函数参数：引脚pin
-返回值：
-*/
-void LED_Init(uint16_t pin)
+void LED_Init(led_in* me)
 {
-    static uint8_t clock_enabled = 0;
-
-    // 只使能一次时钟
-    if (!clock_enabled)
-    {
-        RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-        clock_enabled = 1;
-    }
+    if      (me->gpio == GPIOA) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    else if (me->gpio == GPIOB) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+    else if (me->gpio == GPIOC) RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
 
     GPIO_InitTypeDef GPIO_Inistructure;
     GPIO_Inistructure.GPIO_Mode = GPIO_Mode_Out_PP;  // 推挽输出模式
-    GPIO_Inistructure.GPIO_Pin = pin;                // 引脚
+    GPIO_Inistructure.GPIO_Pin = me->pin;                // 引脚
     GPIO_Inistructure.GPIO_Speed = GPIO_Speed_50MHz; // 输出速度
 
-    GPIO_Init(GPIOA, &GPIO_Inistructure); // 初始化后默认开启LED
+    GPIO_Init(me->gpio, &GPIO_Inistructure); // 初始化后默认开启LED
 
-    GPIO_SetBits(GPIOA, pin); // 关闭led灯
-}
-
-/*
-函数内容：点亮LED
-函数参数：引脚pin
-返回值：
-*/
-void LED_ON(uint16_t pin)
-{
-    GPIO_ResetBits(GPIOA, pin);
-}
-
-/*
-函数内容：熄灭LED
-函数参数：引脚pin
-返回值：
-*/
-void LED_OFF(uint16_t pin)
-{
-    GPIO_SetBits(GPIOA, pin);
-}
-
-/*
-函数内容：翻转LED
-函数参数：引脚pin
-返回值：
-*/
-void LED_Toggle(uint16_t pin)
-{
-    // static uint16_t last_state = 0;如果多个pin调用会相互干扰
-
-    // last_state = GPIO_ReadOutputDataBit(GPIOA, pin);
-    if (GPIO_ReadOutputDataBit(GPIOA, pin) == Bit_RESET)
+    switch (me->state)
     {
-        GPIO_SetBits(GPIOA, pin);
+    case 0:
+        GPIO_SetBits(me->gpio,me->pin);
+        break;
+    case 1:
+        GPIO_ResetBits(me->gpio,me->pin);
+        break;
     }
-    else
-        GPIO_ResetBits(GPIOA, pin);
+}
+
+void LED_ON(led_in* me)
+{
+    GPIO_ResetBits(me->gpio,me->pin);
+}
+
+void LED_OFF(led_in* me)
+{
+    GPIO_SetBits(me->gpio,me->pin);
+}
+
+void LED_Toggle(led_in* me)
+{
+    me->gpio->ODR ^= me->pin;
+    // if(GPIO_ReadOutputDataBit(me->gpio,me->pin)==Bit_SET){
+    // GPIO_ResetBits(me->gpio,me->pin);
+    // }else {
+    // GPIO_SetBits(me->gpio,me->pin);
+    // }
+
+    // if((me->gpio->ODR & me->pin) != (uint32_t)Bit_RESET){//检查是否为高电平
+    //     me->gpio->BRR = me->pin;        
+    // } else{
+    //     me->gpio->BSRR = me->pin;
+    // }
 }
