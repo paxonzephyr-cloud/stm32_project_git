@@ -110,17 +110,6 @@ void Serial_Printf(char *format, ...)
     Serial_SendString(String);
 }
 
-// 读后自动清除
-uint8_t Serial_GetRXFlag(void)
-{
-    if (Serial_RxFlag == 1)
-    {
-        Serial_RxFlag = 0;
-        return 1;
-    }
-    return 0;
-}
-
 void USART1_IRQHandler(void)
 {
     static uint8_t RxState=0;
@@ -131,7 +120,7 @@ void USART1_IRQHandler(void)
         uint8_t RxData=USART_ReceiveData(USART1);
         switch (RxState){   
         case 0: 
-            if (RxData=='@'){
+            if (RxData=='@'&&Serial_RxFlag==0){
                 RxState=1;                                    
                 pRxPacket=0;//进入状态2之前提前清零
             }

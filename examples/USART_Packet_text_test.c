@@ -16,7 +16,7 @@ int main(void)
     OLED_ShowString(3, 1, "RxPacket");
 
     while (1){
-        if(Serial_GetRXFlag()==1){
+        if(Serial_RxFlag==1){
             OLED_ShowString(4,1,"                ");
             OLED_ShowString(4,1,Serial_RxPacket);
 
@@ -35,6 +35,7 @@ int main(void)
                 OLED_ShowString(2,1,"                ");
                 OLED_ShowString(2,1,"ERROR_COMMAND");
             }   
+            Serial_RxFlag=0;
         }
     }
 }
