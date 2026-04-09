@@ -1,0 +1,148 @@
+#include "stdarg.h"
+#include "stdio.h"
+#include "stm32f10x.h" // Device headerc
+
+char Serial_RxPacket[4];
+uint8_t Serial_RxFlag;
+uint8_t RxData;
+
+void Serial_Packet_text_Init(void)
+{
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+
+    USART_InitTypeDef USART_InitSructure;
+    USART_InitSructure.USART_BaudRate = 9600;
+    USART_InitSructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None; // 硬件流使能:否,不使用
+    USART_InitSructure.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;                 // 接收,发送使能
+    USART_InitSructure.USART_Parity = USART_Parity_No;                             // 奇偶校验
+    USART_InitSructure.USART_WordLength = USART_WordLength_8b;
+    USART_InitSructure.USART_StopBits = USART_StopBits_1;
+    USART_Init(USART1, &USART_InitSructure);
+
+    // 使用中断读取
+    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    NVIC_InitTypeDef NVIC_InitStructure;
+    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+    NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+    NVIC_Init(&NVIC_InitStructure);
+
+    USART_Cmd(USART1, ENABLE);
+    USART_ClearFlag(USART1, USART_FLAG_TC); // TC标志位在初始化后是置1的情况
+}
+
+void Serial_SendByte(uint8_t Byte)
+{
+    USART_SendData(USART1, Byte);
+    while (USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET)
+        ;
+    // 关于清除标志位,由于对USART->DR进行写操作时会将TXE标志位清零,所以不用再手动(软件)清除
+}
+
+void Serial_SendArray(uint8_t Array[], uint16_t length)
+{
+    for (uint16_t i = 0; i < length; i++)
+    {
+        Serial_SendByte(Array[i]);
+    }
+}
+
+void Serial_SendString(char *String)
+{
+    while (*String)
+    {
+        Serial_SendByte(*String);
+        String++;
+    }
+}
+
+void Serial_SendNumber(uint32_t number)
+{
+
+    uint32_t num = number;
+    uint32_t mask = 1;
+    while (num > 9)
+    {
+        num /= 10;
+        ;
+        mask *= 10;
+    }
+
+    while (mask)
+    {
+        Serial_SendByte((uint8_t)(number / mask) + '0');
+        number %= mask;
+        mask /= 10;
+    }
+}
+
+int fputc(int ch, FILE *f) // 对printf函数进行了重定义
+{
+
+    USART_SendData(USART1, (uint8_t)ch); // 串口1,发送一个数据
+    while (RESET == USART_GetFlagStatus(USART1, USART_FLAG_TC))
+        ; // 等待发送完成
+    return ch;
+}
+
+void Serial_Printf(char *format, ...)
+{
+    char String[100];
+    va_list arg;
+    va_start(arg, format);
+    vsprintf(String, format, arg);
+    va_end(arg);
+    Serial_SendString(String);
+}
+
+void USART1_IRQHandler(void)
+{
+    static uint8_t RxState=0;
+    static uint8_t pRxPacket=0;//记录接收到的数据的数量
+
+    if (USART_GetITStatus(USART1, USART_IT_RXNE) == SET)
+    {
+        uint8_t RxData=USART_ReceiveData(USART1);
+        switch (RxState){   
+        case 0: 
+            if (RxData=='@'&&Serial_RxFlag==0){
+                RxState=1;                                    
+                pRxPacket=0;//进入状态2之前提前清零
+            }
+            break;
+
+        case 1:  
+            if (RxData=='\r'){
+                RxState=2;
+            }else {
+                Serial_RxPacket[pRxPacket]=RxData;
+                pRxPacket++;
+            }
+            break;
+
+        case 2:
+            if(RxData=='\n'){
+                RxState=0;
+                Serial_RxPacket[pRxPacket]='\0';//加入字符串结束位
+                Serial_RxFlag=1;
+            }
+            break;
+        }
+        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+    }
+}
