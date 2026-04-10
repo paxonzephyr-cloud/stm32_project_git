@@ -90,3 +90,6 @@ options:
     USART_Packet_text_test:
         files: {}
         virtualPathFiles: {}
+    Key_test:
+        files: {}
+        virtualPathFiles: {}
