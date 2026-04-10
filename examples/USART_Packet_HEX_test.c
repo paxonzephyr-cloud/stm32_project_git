@@ -1,7 +1,7 @@
 #include "Delay.h"
 #include "Key.h"
 #include "OLED.h"
-#include "USART_Packet.h"
+#include "USART_Packet_HEX.h"
 #include "stdio.h"
 #include "stm32f10x.h" // Device header
 uint8_t RxData;

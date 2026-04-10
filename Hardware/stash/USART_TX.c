@@ -2,7 +2,7 @@
 #include "stdio.h"
 #include "stdarg.h"
 
-void Seria_Init(void)
+void Serial_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);    
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);    
@@ -42,7 +42,7 @@ void Serial_SendArray(uint8_t Array[],uint16_t length)
     }
 }
 
-void Seria_SendString(char* String)
+void Serial_SendString(char* String)
 {
     while(*String){
         Serial_SendByte(*String);
@@ -50,7 +50,7 @@ void Seria_SendString(char* String)
     }
 }
 
-void Seria_SendNumber(uint32_t number)
+void Serial_SendNumber(uint32_t number)
 {
 
     uint32_t num=number;

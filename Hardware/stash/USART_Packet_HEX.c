@@ -7,7 +7,7 @@ uint8_t Serial_RxPacket[4];
 uint8_t Serial_RxFlag;
 
 
-void Seria_Packet_Init(void)
+void Serial_Packet_Init(void)
 {
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
@@ -63,7 +63,7 @@ void Serial_SendArray(uint8_t Array[], uint16_t length)
     }
 }
 
-void Seria_SendString(char *String)
+void Serial_SendString(char *String)
 {
     while (*String)
     {
@@ -72,7 +72,7 @@ void Seria_SendString(char *String)
     }
 }
 
-void Seria_SendNumber(uint32_t number)
+void Serial_SendNumber(uint32_t number)
 {
 
     uint32_t num = number;
