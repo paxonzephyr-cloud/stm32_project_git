@@ -74,6 +74,8 @@ virtualFolder:
         - path: system/Timer_clock.h
         - path: system/DMA_M2M.c
         - path: system/DMA_M2M.h
+        - path: system/SysTick.c
+        - path: system/SysTick.h
       folders: []
     - name: User
       files:

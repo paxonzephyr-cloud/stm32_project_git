@@ -1,7 +1,6 @@
-#include "Delay.h"
 #include "LED.h"
 #include "stm32f10x.h" // Device header
-
+#include "SysTick.h"
 
 int main(void)
 {
@@ -20,13 +19,19 @@ int main(void)
     {
         LED_Init(&leds[i]);
     }
+    SysTick_Init();
     
+    static uint32_t last_tick=0;
+
     while (1){
         for (uint8_t i = 0; i < 7; i++)
         {
             LED_ON(&leds[i]);
-            Delay_ms(500);
-            LED_OFF(&leds[i]);
+
+            if (Get_Tick()-last_tick>=500){
+                LED_OFF(&leds[i]);
+            }
         }        
     }
 }
+

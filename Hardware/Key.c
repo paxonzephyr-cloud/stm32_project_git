@@ -1,5 +1,6 @@
 #include "Delay.h"
 #include "Key.h"
+#include "SysTick.h"
 /**
  * @brief 初始化按键
  * @param key_in* me
@@ -24,24 +25,44 @@ void KEY_Init(key_in* me)
  * @param key_in* me
  * @return  1/0 按下返回1
  */
-uint8_t KEY_GetNum(key_in* me)
+uint8_t KEY_GetState(key_in* me)
 {
-    uint8_t key_state=GPIO_ReadInputDataBit(me->gpio,me->pin);
+    static KeyState state=IDLE;
+    static uint32_t last_tick=0;
 
-    if (key_state == 0) {
+    switch (state){
+        case IDLE:
+            if(GPIO_ReadInputDataBit(me->gpio,me->pin)==0){
+                last_tick=Get_Tick();
+                state=Debounce_pressed;
+            }
+        break;
 
-        Delay_ms(20);
-        key_state=GPIO_ReadInputDataBit(me->gpio,me->pin);
-
-        if (key_state == 0) {
-        
-            while (GPIO_ReadInputDataBit(me->gpio, me->pin) == Bit_RESET);//等待松开
-
-            Delay_ms(20);//松开防抖,防止松开按键时,因为抖动再次误判为按下导致两次返回
-
-            return 1;
+        case Debounce_pressed:
+        if(Get_Tick()-last_tick>=20){
+            if(GPIO_ReadInputDataBit(me->gpio,me->pin)==0){
+                state=Wait_released;
+            }else state=IDLE;
         }
+        break;
+        
+        case Wait_released:
+            if(GPIO_ReadInputDataBit(me->gpio,me->pin)==1){
+                last_tick=Get_Tick();
+                state=Debounce_released;
+            }
+        break;          
+        
+        case Debounce_released:
+        if(Get_Tick()-last_tick>=20){
+            if(GPIO_ReadInputDataBit(me->gpio,me->pin)==1){
+                state=IDLE;
+                return 1;
+            }else state=Wait_released;
+        } 
+        break;
     }
-    return 0; // 按键没有按下则返回0
+   
+    return 0;
 }
 
