@@ -19,10 +19,10 @@ int main(void)
     KEY_Init(&PB[1]);
 
     while (1){
-       if(KEY_GetNum(&PB[0])){
+       if(KEY_GetState(&PB[0])){
         LED_Toggle(&PA0);
        }
-       if(KEY_GetNum(&PB[1])){
+       if(KEY_GetState(&PB[1])){
         LED_Toggle(&PA1);
        }
     }
