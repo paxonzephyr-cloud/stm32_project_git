@@ -93,3 +93,6 @@ options:
     Key_test:
         files: {}
         virtualPathFiles: {}
+    I2C_soft_test:
+        files: {}
+        virtualPathFiles: {}
