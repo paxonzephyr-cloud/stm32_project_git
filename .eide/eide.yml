@@ -95,6 +95,8 @@ virtualFolder:
         - path: Hardware/OLED_Font.h
         - path: Hardware/MyI2C.c
         - path: Hardware/MyI2C.h
+        - path: Hardware/MPU6050.c
+        - path: Hardware/MPU6050.h
       folders:
         - name: stash
           files: []

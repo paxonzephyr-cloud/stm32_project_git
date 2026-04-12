@@ -1,19 +1,22 @@
 #include "Delay.h"
 #include "stm32f10x.h" // Device header
 #include "OLED.h"
-#include "MyI2C.h"
+#include "MPU6050.h"
 
 int main(void)
 {
     OLED_Init();
-    MyI2C_Init();
+    MPU6050_Init();
 
-    MyI2C_Start();
-    MyI2C_SendByte(0xD0);
-    uint8_t Ack=MyI2C_ReceiveAck();
-    MyI2C_Stop();
+    MPU6050_WriteReg(0x6B,0x00);//解除睡眠模式
+    MPU6050_WriteReg(0x19,0x66);
 
-    OLED_ShowNum(1,1,Ack,3);
+
+    uint8_t Psc=MPU6050_ReadReg(0x19);//写入预分频
+    OLED_ShowHexNum(1,1,Psc,4);
+    
+    uint8_t ID=MPU6050_ReadReg(0x75);//读取硬件ID号----6500<-->70
+    OLED_ShowHexNum(2,1,ID,4);
 
     while (1)
     {
