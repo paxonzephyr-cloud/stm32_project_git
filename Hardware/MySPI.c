@@ -2,6 +2,7 @@
 
 void MySPI_Init(void)
 {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
     //PA6输入,上拉
     //PA4--CS(SS片选),PA5--CLK(SCK时钟),PA7--DI输出
     GPIO_InitTypeDef GPIO_InitStructure;
@@ -14,7 +15,8 @@ void MySPI_Init(void)
     GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
-
+    
+    /*设置默认电平*/
     MySPI_W_SS(HIGH);//SS控制线默认高电平
     MySPI_W_SCK(LOW);//模式0:低电平
     //MOSI没有规定

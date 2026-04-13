@@ -95,6 +95,8 @@ virtualFolder:
         - path: Hardware/OLED_Font.h
         - path: Hardware/MySPI.c
         - path: Hardware/MySPI.h
+        - path: Hardware/W25Q64.c
+        - path: Hardware/W25Q64.h
       folders:
         - name: stash
           files: []
