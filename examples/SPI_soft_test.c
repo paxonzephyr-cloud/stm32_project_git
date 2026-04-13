@@ -5,7 +5,7 @@
 
 uint8_t MID;
 uint16_t DID;
-uint8_t ArrayWrite[]={0xA1,0xB2,0xC3,0xD4};
+uint8_t ArrayWrite[]={0x55,0x66,0x77,0x88};
 uint8_t ArrayRead[4];
 
 
@@ -23,8 +23,13 @@ int main(void)
     OLED_ShowHexNum(1,12,DID,4);
         
     //注释掉这两行已验证掉电丢失
+    //只擦除不写入验证擦除后全为FF
+    //不擦出只写入验证只能1写0,不能0写1---0xAA,0xBB,0xCC,0xDD----A0,B2,C0,D4-----收上一次写入数据影响,每次结果可能不一样
+     //                            --0x55,0x66,0x77,0x88----00.22,40,80   -结果就是写入的数据&原始数据               
     // W25Q64_SectorErase(0x000000);//按页起始地址擦除,语义更清晰
-    // W25Q64_PageProgram(0x000000,ArrayWrite,4);
+    W25Q64_PageProgram(0x000000,ArrayWrite,4);
+
+    
 
     W25Q64_ReadData(0x000000,ArrayRead,4);
 
