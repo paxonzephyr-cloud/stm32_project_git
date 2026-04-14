@@ -7,12 +7,19 @@ void MySPI_Init(void)
     //PA4--CS(SS片选),PA5--CLK(SCK时钟),PA7--DI输出
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_StructInit(&GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_7;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin   = SPI_SS_PIN;
+    GPIO_Init(SPI_SS_GPIO, &GPIO_InitStructure);
 
-    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_6;
+    GPIO_InitStructure.GPIO_Pin   = SPI_SCK_PIN;
+    GPIO_Init(SPI_SCK_GPIO, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin   = SPI_MOSI_PIN;
+    GPIO_Init(SPI_MOSI_GPIO, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin   = SPI_MISO_PIN;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
     
@@ -126,20 +133,20 @@ uint8_t MySPI_Swap_2(uint8_t ByteSend)
 
 void MySPI_W_SS(state BitValue)
 {
-    GPIO_WriteBit(GPIOA,GPIO_Pin_4,(BitAction)BitValue);
+    GPIO_WriteBit(SPI_SS_GPIO,SPI_SS_PIN,(BitAction)BitValue);
 }
 
 void MySPI_W_SCK(state BitValue)
 {
-    GPIO_WriteBit(GPIOA,GPIO_Pin_5,(BitAction)BitValue);
+    GPIO_WriteBit(SPI_SCK_GPIO,SPI_SCK_PIN,(BitAction)BitValue);
 }
 
 void MySPI_W_MOSI(uint8_t BitValue)
 {
-    GPIO_WriteBit(GPIOA,GPIO_Pin_7,(BitAction)BitValue);
+    GPIO_WriteBit(SPI_MOSI_GPIO,SPI_MOSI_PIN,(BitAction)BitValue);
 }
 
 uint8_t MySPI_R_MISO(void)
 {
-    return GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_6);
+    return GPIO_ReadInputDataBit(SPI_MISO_GPIO,SPI_MISO_PIN);
 }
