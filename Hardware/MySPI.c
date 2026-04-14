@@ -7,10 +7,17 @@ void MySPI_Init(void)
     //PA4--CS(SS片选),PA5--CLK(SCK时钟),PA7--DI输出
     GPIO_InitTypeDef GPIO_InitStructure;
     GPIO_StructInit(&GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin   = SPI_SS_PIN|SPI_SCK_PIN|SPI_MOSI_PIN;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    
+    GPIO_InitStructure.GPIO_Pin   = SPI_SS_PIN;
+    GPIO_Init(SPI_SS_GPIO, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin   = SPI_SCK_PIN;
+    GPIO_Init(SPI_SCK_GPIO, &GPIO_InitStructure);
+
+    GPIO_InitStructure.GPIO_Pin   = SPI_MOSI_PIN;
+    GPIO_Init(SPI_MOSI_GPIO, &GPIO_InitStructure);
 
     GPIO_InitStructure.GPIO_Pin   = SPI_MISO_PIN;
     GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_IPU;

@@ -25,7 +25,6 @@ void MySPI_W_SCK(state BitValue);
 void MySPI_W_MOSI(uint8_t BitValue);
 uint8_t MySPI_R_MISO(void);
 
-//4,5,6,7的初始化是一起配置的,GPIOA这里修改了不够,现在先做一个参考
 #define SPI_SS_GPIO     GPIOA
 #define SPI_SS_PIN      GPIO_Pin_4
 
