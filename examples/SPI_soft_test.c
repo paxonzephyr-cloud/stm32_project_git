@@ -26,12 +26,11 @@ int main(void)
     //只擦除不写入验证擦除后全为FF
     //不擦出只写入验证只能1写0,不能0写1---0xAA,0xBB,0xCC,0xDD----A0,B2,C0,D4-----收上一次写入数据影响,每次结果可能不一样
      //                            --0x55,0x66,0x77,0x88----00.22,40,80   -结果就是写入的数据&原始数据               
-    // W25Q64_SectorErase(0x000000);//按页起始地址擦除,语义更清晰
-    W25Q64_PageProgram(0x000000,ArrayWrite,4);
+    W25Q64_SectorErase(0x000000);//按页起始地址擦除,语义更清晰
+    W25Q64_PageProgram(0x0000FF,ArrayWrite,4);
 
-    
-
-    W25Q64_ReadData(0x000000,ArrayRead,4);
+    W25Q64_ReadData(0x0000FF ,ArrayRead,4);//读取可跨页,写入不能
+    // W25Q64_ReadData(0x000000 ,ArrayRead,4);
 
     OLED_ShowHexNum(2,3,ArrayWrite[0],2);
     OLED_ShowHexNum(2,6,ArrayWrite[1],2);
