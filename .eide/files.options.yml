@@ -96,3 +96,6 @@ options:
     I2C_soft_test:
         files: {}
         virtualPathFiles: {}
+    SPI_soft_test:
+        files: {}
+        virtualPathFiles: {}
