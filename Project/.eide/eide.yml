@@ -10,101 +10,106 @@ virtualFolder:
   folders:
     - name: start
       files:
-        - path: startup/startup_stm32f10x_md.s
-        - path: startup/core_cm3.c
-        - path: startup/core_cm3.h
-        - path: startup/stm32f10x.h
-        - path: startup/system_stm32f10x.c
-        - path: startup/system_stm32f10x.h
-      folders: []
-    - name: library
-      files:
-        - path: library/misc.c
-        - path: library/misc.h
-        - path: library/stm32f10x_adc.c
-        - path: library/stm32f10x_adc.h
-        - path: library/stm32f10x_bkp.c
-        - path: library/stm32f10x_bkp.h
-        - path: library/stm32f10x_can.c
-        - path: library/stm32f10x_can.h
-        - path: library/stm32f10x_cec.c
-        - path: library/stm32f10x_cec.h
-        - path: library/stm32f10x_crc.c
-        - path: library/stm32f10x_crc.h
-        - path: library/stm32f10x_dac.c
-        - path: library/stm32f10x_dac.h
-        - path: library/stm32f10x_dbgmcu.c
-        - path: library/stm32f10x_dbgmcu.h
-        - path: library/stm32f10x_dma.c
-        - path: library/stm32f10x_dma.h
-        - path: library/stm32f10x_exti.c
-        - path: library/stm32f10x_exti.h
-        - path: library/stm32f10x_flash.c
-        - path: library/stm32f10x_flash.h
-        - path: library/stm32f10x_fsmc.c
-        - path: library/stm32f10x_fsmc.h
-        - path: library/stm32f10x_gpio.c
-        - path: library/stm32f10x_gpio.h
-        - path: library/stm32f10x_i2c.c
-        - path: library/stm32f10x_i2c.h
-        - path: library/stm32f10x_iwdg.c
-        - path: library/stm32f10x_iwdg.h
-        - path: library/stm32f10x_pwr.c
-        - path: library/stm32f10x_pwr.h
-        - path: library/stm32f10x_rcc.c
-        - path: library/stm32f10x_rcc.h
-        - path: library/stm32f10x_rtc.c
-        - path: library/stm32f10x_rtc.h
-        - path: library/stm32f10x_sdio.c
-        - path: library/stm32f10x_sdio.h
-        - path: library/stm32f10x_spi.c
-        - path: library/stm32f10x_spi.h
-        - path: library/stm32f10x_tim.c
-        - path: library/stm32f10x_tim.h
-        - path: library/stm32f10x_usart.c
-        - path: library/stm32f10x_usart.h
-        - path: library/stm32f10x_wwdg.c
-        - path: library/stm32f10x_wwdg.h
+        - path: ../startup/core_cm3.c
+        - path: ../startup/core_cm3.h
+        - path: ../startup/stm32f10x.h
+        - path: ../startup/system_stm32f10x.c
+        - path: ../startup/system_stm32f10x.h
+        - path: ../startup/startup_stm32f10x_md.s
       folders: []
     - name: system
       files:
-        - path: system/Delay.c
-        - path: system/Delay.h
-        - path: system/Timer_clock.c
-        - path: system/Timer_clock.h
-        - path: system/DMA_M2M.c
-        - path: system/DMA_M2M.h
-        - path: system/SysTick.c
-        - path: system/SysTick.h
+        - path: ../system/Delay.c
+        - path: ../system/Delay.h
+        - path: ../system/DMA_M2M.c
+        - path: ../system/DMA_M2M.h
+        - path: ../system/SysTick.c
+        - path: ../system/SysTick.h
+        - path: ../system/Timer_clock.c
+        - path: ../system/Timer_clock.h
       folders: []
     - name: User
       files:
-        - path: User/main.c
-        - path: User/stm32f10x_conf.h
-        - path: User/stm32f10x_it.c
-        - path: User/stm32f10x_it.h
+        - path: ../User/main.c
+        - path: ../User/stm32f10x_conf.h
+        - path: ../User/stm32f10x_it.c
+        - path: ../User/stm32f10x_it.h
       folders: []
-    - name: Hardware
-      files:
-        - path: Hardware/LED.c
-        - path: Hardware/LED.h
-        - path: Hardware/Key.c
-        - path: Hardware/Key.h
-        - path: Hardware/OLED.c
-        - path: Hardware/OLED.h
-        - path: Hardware/OLED_Font.h
-        - path: Hardware/MySPI_struct.c
-        - path: Hardware/MySPI_struct.h
-        - path: Hardware/W25Q64_struct.c
-        - path: Hardware/W25Q64_struct.h
-      folders:
-        - name: stash
-          files: []
-          folders: []
     - name: examples
       files:
-        - path: examples/SPI_struct_test.c
+        - path: ../examples/4_OLED/OLED_test.c
       folders: []
+    - name: library
+      files:
+        - path: ../library/misc.c
+        - path: ../library/misc.h
+        - path: ../library/stm32f10x_adc.c
+        - path: ../library/stm32f10x_adc.h
+        - path: ../library/stm32f10x_bkp.c
+        - path: ../library/stm32f10x_bkp.h
+        - path: ../library/stm32f10x_can.c
+        - path: ../library/stm32f10x_can.h
+        - path: ../library/stm32f10x_cec.c
+        - path: ../library/stm32f10x_cec.h
+        - path: ../library/stm32f10x_crc.c
+        - path: ../library/stm32f10x_crc.h
+        - path: ../library/stm32f10x_dac.c
+        - path: ../library/stm32f10x_dac.h
+        - path: ../library/stm32f10x_dbgmcu.c
+        - path: ../library/stm32f10x_dbgmcu.h
+        - path: ../library/stm32f10x_dma.c
+        - path: ../library/stm32f10x_dma.h
+        - path: ../library/stm32f10x_exti.c
+        - path: ../library/stm32f10x_exti.h
+        - path: ../library/stm32f10x_flash.c
+        - path: ../library/stm32f10x_flash.h
+        - path: ../library/stm32f10x_fsmc.c
+        - path: ../library/stm32f10x_fsmc.h
+        - path: ../library/stm32f10x_gpio.c
+        - path: ../library/stm32f10x_gpio.h
+        - path: ../library/stm32f10x_i2c.c
+        - path: ../library/stm32f10x_i2c.h
+        - path: ../library/stm32f10x_iwdg.c
+        - path: ../library/stm32f10x_iwdg.h
+        - path: ../library/stm32f10x_pwr.c
+        - path: ../library/stm32f10x_pwr.h
+        - path: ../library/stm32f10x_rcc.c
+        - path: ../library/stm32f10x_rcc.h
+        - path: ../library/stm32f10x_rtc.c
+        - path: ../library/stm32f10x_rtc.h
+        - path: ../library/stm32f10x_sdio.c
+        - path: ../library/stm32f10x_sdio.h
+        - path: ../library/stm32f10x_spi.c
+        - path: ../library/stm32f10x_spi.h
+        - path: ../library/stm32f10x_tim.c
+        - path: ../library/stm32f10x_tim.h
+        - path: ../library/stm32f10x_usart.c
+        - path: ../library/stm32f10x_usart.h
+        - path: ../library/stm32f10x_wwdg.c
+        - path: ../library/stm32f10x_wwdg.h
+      folders: []
+    - name: Hardware
+      files: []
+      folders:
+        - name: LED
+          files: []
+          folders: []
+        - name: Key
+          files: []
+          folders: []
+        - name: ADC
+          files:
+            - path: ../Hardware/ADC/ADC_multi.c
+            - path: ../Hardware/ADC/ADC_multi.h
+            - path: ../Hardware/ADC/ADC_single.c
+            - path: ../Hardware/ADC/ADC_single.h
+          folders: []
+        - name: OLED
+          files:
+            - path: ../Hardware/OLED/OLED.c
+            - path: ../Hardware/OLED/OLED.h
+            - path: ../Hardware/OLED/OLED_Font.h
+          folders: []
 dependenceList: []
 outDir: build
 miscInfo:
@@ -117,17 +122,19 @@ targets:
         - STM32F10X_MD
       incList:
         - .
-        - startup
-        - library
-        - User
-        - system
-        - .cmsis/include
-        - RTE/_Target_1
-        - Hardware
-        - examples
+        - ../startup
+        - ../library
+        - ../User
+        - ../Hardware
+        - ../examples
+        - ../Hardware/OLED
+        - ../system
       libList: []
     excludeList:
-      - <virtual_root>/examples
+      - <virtual_root>/Hardware/ADC
+      - <virtual_root>/Hardware/Key
+      - <virtual_root>/Hardware/LED
+      - <virtual_root>/User/main.c
     settings:
       debugger: cortex-debug
     toolchain: AC5
@@ -245,7 +252,7 @@ targets:
         speed: 8000
       OpenOCD:
         baseAddr: "0x08000000"
-        bin: ./build/Target_1/templateDemo.hex
+        bin: ${ExecutableName}.hex
         interface: stlink
         target: stm32f1x
       STLink:
