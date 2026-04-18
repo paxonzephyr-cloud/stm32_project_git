@@ -1,5 +1,5 @@
-#ifndef __USART_HEX_H
-#define __USART_HEX_H
+#ifndef __USART_PACKET_HEX_H
+#define __USART_PACKET_HEX_H
 #include "stm32f10x.h"
 
 extern uint8_t Serial_TxPacket[];

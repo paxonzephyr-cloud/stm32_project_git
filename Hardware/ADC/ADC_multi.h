@@ -3,6 +3,6 @@
 #include <stdint.h>
 
 void ADC_multi_Init(void);
-uint16_t ADC_GetValue(uint8_t ADC_Channel);
+uint16_t ADC_GetValue_2(uint8_t ADC_Channel);
 
 #endif
