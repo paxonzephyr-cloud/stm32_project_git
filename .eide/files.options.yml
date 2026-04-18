@@ -99,3 +99,6 @@ options:
     SPI_soft_test:
         files: {}
         virtualPathFiles: {}
+    SPI_struct_test:
+        files: {}
+        virtualPathFiles: {}
