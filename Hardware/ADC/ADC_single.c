@@ -38,7 +38,7 @@ void ADC_single_Init(void)
     
 }
 
-uint16_t ADC_GetValue(void)
+uint16_t ADC_GetValue_1(void)
 {
     ADC_SoftwareStartConvCmd(ADC1,ENABLE);
     while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC)==RESET);//等待ADC转换完成

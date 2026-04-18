@@ -35,7 +35,7 @@ void ADC_multi_Init(void)
     
 }
 
-uint16_t ADC_GetValue(uint8_t ADC_Channel)
+uint16_t ADC_GetValue_2(uint8_t ADC_Channel)
 {
      //3.多路开关
     ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime_55Cycles5);

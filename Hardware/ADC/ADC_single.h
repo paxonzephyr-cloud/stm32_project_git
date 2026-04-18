@@ -3,6 +3,6 @@
 #include <stdint.h>
 
 void ADC_single_Init(void);
-uint16_t ADC_GetValue(void);
+uint16_t ADC_GetValue_1(void);
 
 #endif

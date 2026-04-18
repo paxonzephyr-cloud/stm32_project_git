@@ -1,0 +1,407 @@
+version: "4.1"
+name: templateDemo
+type: ARM
+deviceName: null
+packDir: null
+srcDirs: []
+virtualFolder:
+  name: <virtual_root>
+  files: []
+  folders:
+    - name: start
+      files:
+        - path: ../startup/core_cm3.c
+        - path: ../startup/core_cm3.h
+        - path: ../startup/stm32f10x.h
+        - path: ../startup/system_stm32f10x.c
+        - path: ../startup/system_stm32f10x.h
+        - path: ../startup/startup_stm32f10x_md.s
+      folders: []
+    - name: system
+      files:
+        - path: ../system/Delay.c
+        - path: ../system/Delay.h
+        - path: ../system/DMA_M2M.c
+        - path: ../system/DMA_M2M.h
+        - path: ../system/SysTick.c
+        - path: ../system/SysTick.h
+        - path: ../system/Timer_clock.c
+        - path: ../system/Timer_clock.h
+      folders: []
+    - name: User
+      files:
+        - path: ../User/main.c
+        - path: ../User/stm32f10x_conf.h
+        - path: ../User/stm32f10x_it.c
+        - path: ../User/stm32f10x_it.h
+      folders: []
+    - name: examples
+      files: []
+      folders:
+        - name: 3_GPIO
+          files:
+            - path: ../examples/3_GPIO/Key_test.c
+            - path: ../examples/3_GPIO/LED_test.c
+            - path: ../examples/3_GPIO/Buzzer_test.c
+          folders: []
+        - name: 4_OLED
+          files:
+            - path: ../examples/4_OLED/OLED_test.c
+          folders: []
+        - name: 5_EXTI
+          files:
+            - path: ../examples/5_EXTI/EXTI_Count_sensor_test.c
+            - path: ../examples/5_EXTI/EXTI_Encoder_test.c
+          folders: []
+        - name: 6_Timer
+          files:
+            - path: ../examples/6_Timer/Encoder_Interface_test.c
+            - path: ../examples/6_Timer/InputCapture_test.c
+            - path: ../examples/6_Timer/PWM_LEDbreath_test.c
+            - path: ../examples/6_Timer/PWM_motor_test.c
+            - path: ../examples/6_Timer/PWM_servo_test.c
+            - path: ../examples/6_Timer/Timer_clock_test.c
+            - path: ../examples/6_Timer/Timer_gpio_etr_test.c
+          folders: []
+        - name: 7_ADC
+          files:
+            - path: ../examples/7_ADC/ADC_multi_test.c
+            - path: ../examples/7_ADC/ADC_single_test.c
+          folders: []
+        - name: 8_DMA
+          files:
+            - path: ../examples/8_DMA/DMA_ADC_multi_test.c
+            - path: ../examples/8_DMA/DMA_M2M_test.c
+          folders: []
+        - name: 9_USART
+          files: []
+          folders: []
+        - name: 10_I2C
+          files:
+            - path: ../examples/10_I2C/I2C_soft_test.c
+          folders: []
+        - name: 11_SPI
+          files:
+            - path: ../examples/11_SPI/SPI_soft_test.c
+            - path: ../examples/11_SPI/SPI_struct_test.c
+          folders: []
+    - name: library
+      files:
+        - path: ../library/misc.c
+        - path: ../library/misc.h
+        - path: ../library/stm32f10x_adc.c
+        - path: ../library/stm32f10x_adc.h
+        - path: ../library/stm32f10x_bkp.c
+        - path: ../library/stm32f10x_bkp.h
+        - path: ../library/stm32f10x_can.c
+        - path: ../library/stm32f10x_can.h
+        - path: ../library/stm32f10x_cec.c
+        - path: ../library/stm32f10x_cec.h
+        - path: ../library/stm32f10x_crc.c
+        - path: ../library/stm32f10x_crc.h
+        - path: ../library/stm32f10x_dac.c
+        - path: ../library/stm32f10x_dac.h
+        - path: ../library/stm32f10x_dbgmcu.c
+        - path: ../library/stm32f10x_dbgmcu.h
+        - path: ../library/stm32f10x_dma.c
+        - path: ../library/stm32f10x_dma.h
+        - path: ../library/stm32f10x_exti.c
+        - path: ../library/stm32f10x_exti.h
+        - path: ../library/stm32f10x_flash.c
+        - path: ../library/stm32f10x_flash.h
+        - path: ../library/stm32f10x_fsmc.c
+        - path: ../library/stm32f10x_fsmc.h
+        - path: ../library/stm32f10x_gpio.c
+        - path: ../library/stm32f10x_gpio.h
+        - path: ../library/stm32f10x_i2c.c
+        - path: ../library/stm32f10x_i2c.h
+        - path: ../library/stm32f10x_iwdg.c
+        - path: ../library/stm32f10x_iwdg.h
+        - path: ../library/stm32f10x_pwr.c
+        - path: ../library/stm32f10x_pwr.h
+        - path: ../library/stm32f10x_rcc.c
+        - path: ../library/stm32f10x_rcc.h
+        - path: ../library/stm32f10x_rtc.c
+        - path: ../library/stm32f10x_rtc.h
+        - path: ../library/stm32f10x_sdio.c
+        - path: ../library/stm32f10x_sdio.h
+        - path: ../library/stm32f10x_spi.c
+        - path: ../library/stm32f10x_spi.h
+        - path: ../library/stm32f10x_tim.c
+        - path: ../library/stm32f10x_tim.h
+        - path: ../library/stm32f10x_usart.c
+        - path: ../library/stm32f10x_usart.h
+        - path: ../library/stm32f10x_wwdg.c
+        - path: ../library/stm32f10x_wwdg.h
+      folders: []
+    - name: Hardware
+      files: []
+      folders:
+        - name: LED
+          files:
+            - path: ../Hardware/LED/LED.c
+            - path: ../Hardware/LED/LED.h
+          folders: []
+        - name: Key
+          files:
+            - path: ../Hardware/Key/Key.h
+            - path: ../Hardware/Key/Key.c
+          folders: []
+        - name: ADC
+          files:
+            - path: ../Hardware/ADC/ADC_multi.c
+            - path: ../Hardware/ADC/ADC_multi.h
+            - path: ../Hardware/ADC/ADC_single.c
+            - path: ../Hardware/ADC/ADC_single.h
+          folders: []
+        - name: OLED
+          files:
+            - path: ../Hardware/OLED/OLED.c
+            - path: ../Hardware/OLED/OLED.h
+            - path: ../Hardware/OLED/OLED_Font.h
+            - path: ../Hardware/OLED/OLED_22.c
+          folders: []
+        - name: USART
+          files:
+            - path: ../Hardware/USART/USART_Packet_HEX.c
+            - path: ../Hardware/USART/USART_Packet_HEX.h
+            - path: ../Hardware/USART/USART_Packet_text.c
+            - path: ../Hardware/USART/USART_Packet_text.h
+            - path: ../Hardware/USART/USART_TX_RX.c
+            - path: ../Hardware/USART/USART_TX_RX.h
+            - path: ../Hardware/USART/USART_TX.c
+            - path: ../Hardware/USART/USART_TX.h
+          folders: []
+        - name: SPI
+          files:
+            - path: ../Hardware/SPI/W25Q64_struct.c
+            - path: ../Hardware/SPI/W25Q64_struct.h
+            - path: ../Hardware/SPI/W25Q64.c
+            - path: ../Hardware/SPI/W25Q64.h
+            - path: ../Hardware/SPI/MySPI.h
+            - path: ../Hardware/SPI/MySPI.c
+            - path: ../Hardware/SPI/MySPI_struct.h
+            - path: ../Hardware/SPI/MySPI_struct.c
+          folders: []
+        - name: EXTI
+          files:
+            - path: ../Hardware/EXTI/EXTI_Encoder.h
+            - path: ../Hardware/EXTI/EXTI_Encoder.c
+            - path: ../Hardware/EXTI/EXTI_Count_sensor.h
+            - path: ../Hardware/EXTI/EXTI_Count_sensor.c
+          folders: []
+        - name: I2C
+          files:
+            - path: ../Hardware/I2C/MPU6050.c
+            - path: ../Hardware/I2C/MPU6050.h
+            - path: ../Hardware/I2C/MyI2C.c
+            - path: ../Hardware/I2C/MyI2C.h
+          folders: []
+        - name: PWM
+          files:
+            - path: ../Hardware/PWM/PWM_LEDbreath.c
+            - path: ../Hardware/PWM/PWM_LEDbreath.h
+            - path: ../Hardware/PWM/PWM_motor_Init.c
+            - path: ../Hardware/PWM/PWM_motor.c
+            - path: ../Hardware/PWM/PWM_motor.h
+            - path: ../Hardware/PWM/PWM_motor_Init.h
+            - path: ../Hardware/PWM/PWM_servo.c
+            - path: ../Hardware/PWM/PWM_servo.h
+          folders: []
+        - name: InputCapture
+          files:
+            - path: ../Hardware/InputCapture/InputCapture_Init.c
+            - path: ../Hardware/InputCapture/InputCapture_Init.h
+            - path: ../Hardware/InputCapture/InputCapture_PWM_Init.c
+            - path: ../Hardware/InputCapture/InputCapture_PWM_Init.h
+          folders: []
+        - name: Buzzer
+          files:
+            - path: ../Hardware/Buzzer/Buzzer.c
+            - path: ../Hardware/Buzzer/Buzzer.h
+          folders: []
+        - name: DMA
+          files:
+            - path: ../Hardware/DMA/DMA_ADC_multi.c
+            - path: ../Hardware/DMA/DMA_ADC_multi.h
+          folders: []
+dependenceList: []
+outDir: build
+miscInfo:
+  uid: 8b3e937288aa8b9b6620ece8434a91d9
+targets:
+  default:
+    cppPreprocessAttrs:
+      defineList:
+        - USE_STDPERIPH_DRIVER
+        - STM32F10X_MD
+      incList:
+        - .
+        - ../startup
+        - ../library
+        - ../User
+        - ../Hardware
+        - ../examples
+        - ../Hardware/OLED
+        - ../system
+        - ../Hardware/LED
+        - ../Hardware/ADC
+        - ../Hardware/Buzzer
+        - ../Hardware/DMA
+        - ../Hardware/EXTI
+        - ../Hardware/I2C
+        - ../Hardware/InputCapture
+        - ../Hardware/Key
+        - ../Hardware/PWM
+        - ../Hardware/SPI
+        - ../Hardware/stash
+        - ../Hardware/USART
+      libList: []
+    excludeList:
+      - <virtual_root>/Hardware/USART
+      - <virtual_root>/Hardware/SPI/MySPI.c
+      - <virtual_root>/Hardware/SPI/W25Q64.c
+      - <virtual_root>/Hardware/PWM/PWM_LEDbreath.c
+      - <virtual_root>/Hardware/DMA
+      - <virtual_root>/examples/10_I2C
+      - <virtual_root>/examples/3_GPIO
+      - <virtual_root>/examples/4_OLED
+      - <virtual_root>/examples/5_EXTI
+      - <virtual_root>/examples/6_Timer
+      - <virtual_root>/examples/7_ADC
+      - <virtual_root>/examples/8_DMA
+      - <virtual_root>/examples/9_USART
+      - <virtual_root>/examples/11_SPI/SPI_soft_test.c
+      - <virtual_root>/Hardware/OLED/OLED.c
+      - <virtual_root>/User/main.c
+    settings:
+      debugger: cortex-debug
+    toolchain: AC5
+    toolchainConfigMap:
+      AC5:
+        archExtensions: ""
+        cpuType: Cortex-M3
+        floatingPointHardware: none
+        options:
+          version: 4
+          afterBuildTasks: []
+          asm-compiler: {}
+          beforeBuildTasks: []
+          c/cpp-compiler:
+            CXX_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            C_FLAGS: --diag_suppress=1 --diag_suppress=1295
+            c99-mode: true
+            gnu-extensions: true
+            one-elf-section-per-function: true
+            optimization: level-1
+            warnings: all-warnings
+          global:
+            output-debug-info: enable
+          linker:
+            $outputTaskExcludes:
+              - .bin
+              - .s19
+            output-format: elf
+            ro-base: "0x08000000"
+            rw-base: "0x20000000"
+        scatterFilePath: ""
+        storageLayout:
+          RAM:
+            - id: 1
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 3
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: RAM
+            - id: 1
+              isChecked: true
+              mem:
+                size: "0x5000"
+                startAddr: "0x20000000"
+              noInit: false
+              tag: IRAM
+            - id: 2
+              isChecked: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              noInit: false
+              tag: IRAM
+          ROM:
+            - id: 1
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 3
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: ROM
+            - id: 1
+              isChecked: true
+              isStartup: true
+              mem:
+                size: "0x10000"
+                startAddr: "0x8000000"
+              tag: IROM
+            - id: 2
+              isChecked: false
+              isStartup: false
+              mem:
+                size: "0x0"
+                startAddr: "0x0"
+              tag: IROM
+        useCustomScatterFile: false
+    uploadConfigMap:
+      JLink:
+        baseAddr: ""
+        bin: ""
+        cpuInfo:
+          cpuName: "null"
+          vendor: "null"
+        otherCmds: ""
+        proType: 1
+        speed: 8000
+      OpenOCD:
+        baseAddr: "0x08000000"
+        bin: ${ExecutableName}.hex
+        interface: stlink
+        target: stm32f1x
+      STLink:
+        address: "0x8000000"
+        bin: ""
+        elFile: None
+        optionBytes: .eide/target_1.st.option.bytes.ini
+        otherCmds: ""
+        proType: SWD
+        resetMode: default
+        runAfterProgram: true
+        speed: 4000
+    uploader: OpenOCD
