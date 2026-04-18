@@ -8,22 +8,10 @@ typedef enum{
     HIGH,
 }state;
 
-typedef struct 
-{
-    GPIO_TypeDef gpio;
-    uint16_t pin;
-    state BitValue;
-}spi_in;
-
 void MySPI_Init(void);
 void MySPI_Start(void);
 void MySPI_Stop(void);
 uint8_t MySPI_Swap(uint8_t ByteSend);
-
-void MySPI_W_SS(state BitValue);
-void MySPI_W_SCK(state BitValue);
-void MySPI_W_MOSI(uint8_t BitValue);
-uint8_t MySPI_R_MISO(void);
 
 #define SPI_SS_GPIO     GPIOA
 #define SPI_SS_PIN      GPIO_Pin_4
@@ -36,5 +24,11 @@ uint8_t MySPI_R_MISO(void);
 
 #define SPI_MISO_GPIO   GPIOA
 #define SPI_MISO_PIN    GPIO_Pin_6
+
+void MySPI_W_SS(state BitValue);
+void MySPI_W_SCK(state BitValue);
+void MySPI_W_MOSI(uint8_t BitValue);
+uint8_t MySPI_R_MISO(void);
+
 
 #endif
